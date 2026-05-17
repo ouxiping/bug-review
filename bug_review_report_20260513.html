@@ -172,10 +172,10 @@
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#f87171"/></svg>
     </div>
     <div class="cat-title">
-      <h2>分类一：查询条件不精确</h2>
-      <div class="bug-list">#39949 · #39437 · #39882</div>
+      <h2>分类一：目标数据定位不准确</h2>
+      <div class="bug-list">#39949 · #39882</div>
     </div>
-    <div class="cat-badge" style="background:rgba(248,113,113,0.15);color:var(--red);">3个问题</div>
+    <div class="cat-badge" style="background:rgba(248,113,113,0.15);color:var(--red);">2个问题</div>
   </div>
   <div class="cat-body">
     <div class="fix-action">
@@ -195,21 +195,6 @@
         <dt>根因</dt><dd>溯源物流码同步定时任务执行时报错退出，sys_tenant_erp_config 表中伊利租户存在多条配置记录（不同连锁），查询时未加连锁ID过滤条件，导致取到错误的配置，接口调用失败</dd>
         <dt>触发条件</dt><dd>伊利租户在配置表中存在多条配置（多连锁场景）</dd>
         <dt>解决方案</dt><dd>查询配置时补充连锁ID作为过滤条件</dd>
-        <dt>状态</dt><dd><span class="tag tag-resolved">已解决</span></dd>
-      </div>
-    </div>
-
-    <!-- #39437 -->
-    <div class="bug-card">
-      <h4>
-        <span class="bid">#39437</span>
-        <span class="title-text">【喜阳阳】价格调整单下载的是门店例外的模版，但是导入时选择主档案也能正常导入提交【8050环境能复现出来】</span>
-      </h4>
-      <div class="detail-grid">
-        <dt>产品/严重</dt><dd><span class="tag tag-erp">ERP</span> <span class="s2">严重</span></dd>
-        <dt>根因</dt><dd>导入框架按字段名识别模板类型，不校验模板来源与当前操作类型是否匹配。下载的是"门店例外"模板，选择"商品档案价格"也能成功导入</dd>
-        <dt>触发条件</dt><dd>用户下载了错误的模板（如门店例外模板），却选择了商品档案价格类型导入</dd>
-        <dt>解决方案</dt><dd>导入时识别模板第一行信息，若模板类型与导入类型不匹配则报错提示</dd>
         <dt>状态</dt><dd><span class="tag tag-resolved">已解决</span></dd>
       </div>
     </div>
@@ -456,13 +441,28 @@
     </div>
     <div class="cat-title">
       <h2>分类六：数据一致性校验缺失</h2>
-      <div class="bug-list">#39865 · #39556</div>
+      <div class="bug-list">#39437 · #39865 · #39556</div>
     </div>
-    <div class="cat-badge" style="background:rgba(129,140,248,0.15);color:var(--accent2);">2个问题</div>
+    <div class="cat-badge" style="background:rgba(129,140,248,0.15);color:var(--accent2);">3个问题</div>
   </div>
   <div class="cat-body">
     <div class="fix-action">
       <div class="fa-item"><span class="fa-label">核心原则</span>接收外部数据或前端提交时，服务端必须校验数据内部一致性（单据号/金额/品牌等关键字段必须与当前业务状态匹配），关键字段以服务端档案为准，禁止信任前端/外部传入。</div>
+    </div>
+
+    <!-- #39437 -->
+    <div class="bug-card">
+      <h4>
+        <span class="bid">#39437</span>
+        <span class="title-text">【喜阳阳】价格调整单下载的是门店例外的模版，但是导入时选择主档案也能正常导入提交【8050环境能复现出来】</span>
+      </h4>
+      <div class="detail-grid">
+        <dt>产品/严重</dt><dd><span class="tag tag-erp">ERP</span> <span class="s2">严重</span></dd>
+        <dt>根因</dt><dd>导入框架按字段名识别模板类型，不校验模板来源与当前操作类型是否匹配。下载的是"门店例外"模板，选择"商品档案价格"也能成功导入</dd>
+        <dt>触发条件</dt><dd>用户下载了错误的模板（如门店例外模板），却选择了商品档案价格类型导入</dd>
+        <dt>解决方案</dt><dd>导入时识别模板第一行信息，若模板类型与导入类型不匹配则报错提示</dd>
+        <dt>状态</dt><dd><span class="tag tag-resolved">已解决</span></dd>
+      </div>
     </div>
 
     <!-- #39865 -->
